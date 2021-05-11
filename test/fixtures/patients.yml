@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  id_card_number: MyString
+  personal_numerical_code: 1
+  date_of_birth: 2021-05-11
+  address: MyString
+
+two:
+  name: MyString
+  id_card_number: MyString
+  personal_numerical_code: 1
+  date_of_birth: 2021-05-11
+  address: MyString
