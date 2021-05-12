@@ -1,0 +1,29 @@
+- provide(:title, 'User')
+
+%h3= @user.username
+
+%br
+%p
+  %strong
+    Username: 
+  = "#{@user.username}"
+%p 
+  %strong 
+    Name:
+  = "#{@user.name}"
+%p 
+  %strong 
+    Role:
+  = "#{@user.type}"
+%p
+  %strong
+    Time created: 
+  = "#{@user.created_at}"
+%p
+  %strong
+    Time last updated: 
+  = "#{@user.updated_at}"
+
+= link_to 'Edit user', edit_user_path(@user), class: 'btn btn-primary btn-custom' 
+%br
+= link_to 'Back', root_path

@@ -1,0 +1,37 @@
+- provide(:title, 'Patient')
+
+%h3= @patient.name
+
+%br
+%p
+  %strong
+    Name: 
+  = "#{@patient.name}"
+%p 
+  %strong 
+    Identity card number:
+  = "#{@patient.id_card_number}"
+%p 
+  %strong 
+    Personal numerical code:
+  = "#{@patient.personal_numerical_code}"
+%p 
+  %strong 
+    Date of birth:
+  = "#{@patient.date_of_birth}"
+%p 
+  %strong 
+    Address:
+  = "#{@patient.address}"
+%p
+  %strong
+    Time created: 
+  = "#{@patient.created_at}"
+%p
+  %strong
+    Time last updated: 
+  = "#{@patient.updated_at}"
+
+= link_to 'Edit patient', edit_patient_path(@patient), class: 'btn btn-primary btn-custom' 
+%br
+= link_to 'Back', root_path

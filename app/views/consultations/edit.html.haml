@@ -1,0 +1,8 @@
+- provide(:title, 'Edit')
+- provide(:button_text, 'Save changes')
+%h1 Edit consultation 
+
+.row 
+  .col-md-6.col-md-offset-3
+    = render 'form'
+    = link_to 'Back', @consultation

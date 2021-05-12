@@ -1,0 +1,15 @@
+= form_with(model: @consultation, local: true) do |f|
+  = render 'shared/error_messages', object: @consultation
+
+  = f.fields_for :doctor, @consultation.doctor do |ff|
+    = ff.label :username, "Doctor's username"
+    = ff.text_field :username, class: 'form-control'
+
+  = f.fields_for :patient, @consultation.patient   do |ff|
+    = ff.label :personal_numerical_code, "Patient's personal numerical code"
+    = ff.text_field :personal_numerical_code, class: 'form-control'
+
+  = f.label :date_time
+  = f.datetime_field :date_time, class: 'form-control'
+
+  = f.submit yield(:button_text), class: 'btn btn-primary'

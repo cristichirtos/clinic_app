@@ -1,0 +1,19 @@
+= form_with(model: @patient, local: true) do |f|
+  = render 'shared/error_messages', object: @patient
+
+  = f.label :name
+  = f.text_field :name, class: 'form-control'
+
+  = f.label :id_card_number, 'Identity card number'
+  = f.text_field :id_card_number, class: 'form-control'
+
+  = f.label :personal_numerical_code
+  = f.text_field :personal_numerical_code, class: 'form-control'
+
+  = f.label :date_of_birth
+  = f.date_field :date_of_birth, class: 'form-control'
+
+  = f.label :address
+  = f.text_field :address, class: 'form-control'
+
+  = f.submit yield(:button_text), class: 'btn btn-primary'

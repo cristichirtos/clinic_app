@@ -1,0 +1,30 @@
+- provide(:title, 'Consultation')
+
+%h3 Consultation
+
+%br
+%p
+  %strong
+    Doctor: 
+  = "#{@consultation.doctor.name} (username: #{@consultation.doctor.username})"
+%p 
+  %strong 
+    Patient:
+  = link_to @consultation.patient.name, @consultation.patient
+%p 
+  %strong 
+    Date and time:
+  = "#{@consultation.date_time}"
+%p
+  %strong
+    Time created: 
+  = "#{@consultation.created_at}"
+%p
+  %strong
+    Time last updated: 
+  = "#{@consultation.updated_at}"
+
+= link_to 'Edit consultation', edit_consultation_path(@consultation), class: 'btn btn-primary' 
+= link_to 'Delete', @consultation, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } if secretary?
+%br
+= link_to 'Back', root_path

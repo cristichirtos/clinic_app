@@ -1,0 +1,15 @@
+- provide(:title, 'Patients')
+%h1 All patients
+
+%h3= link_to 'New patient', new_patient_path, class: 'btn btn-primary'
+
+= will_paginate
+
+%ul.users
+  - @patients.each do |patient|
+    %li
+      = link_to patient.name, patient
+      | 
+      = link_to 'delete', patient, method: :delete, data: { confirm: 'Are you sure?' }
+
+= will_paginate

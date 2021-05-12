@@ -41,6 +41,6 @@ ActiveRecord::Schema.define(version: 2021_05_11_103636) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "consultations", "doctors"
   add_foreign_key "consultations", "patients"
+  add_foreign_key "consultations", "users", column: "doctor_id"
 end
