@@ -11,4 +11,8 @@ module ApplicationHelper
   def secretary?
     AuthenticationService.new(session).current_user.secretary?
   end
+
+  def doctor? 
+    AuthenticationService.new(session).current_user.doctor?
+  end
 end

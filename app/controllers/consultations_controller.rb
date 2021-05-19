@@ -20,9 +20,19 @@ class ConsultationsController < ApplicationController
     @consultation = @consultation_service.create(consultation_params)
     if @consultation.errors.empty?
       flash[:success] = 'Consultation added.'
+      send_notification("Patient #{@consultation.patient.name} scheduled for consultation on #{@consultation.date_time}")
+
       redirect_to root_path
     else
       render 'new'
+    end
+  end
+
+  def check_in
+    @consultation = @consultation_service.find_by_id(params[:id])
+    send_notification("Patient #{@consultation.patient.name} has arrived for consultation")
+
+    redirect_to root_path
     end
   end
 
@@ -75,5 +85,12 @@ class ConsultationsController < ApplicationController
 
     def consultation_params
       params.require(:consultation).permit({:doctor => [:username]}, {:patient => [:personal_numerical_code]}, :date_time)
+    end
+
+    def send_notification(message)
+      notification = Notification.new(sender: @authentication_service.current_user.id, 
+                                      content: message, 
+                                      receiver: @consultation.doctor.id)
+      ActionCable.server.broadcast('notifications', { sender: notification.sender, content: notification.content }) 
     end
 end

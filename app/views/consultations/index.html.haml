@@ -1,6 +1,9 @@
 - provide(:title, 'Consultations')
 %h1 Consultations
 
+- if doctor?
+  #notifications.hidden 
+
 = will_paginate
 
 .row

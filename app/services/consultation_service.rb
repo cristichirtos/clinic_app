@@ -7,7 +7,7 @@ class ConsultationService
   end
 
   def all_for_doctor(doctor, page)
-    doctor.consultations.includes(:patient).paginate(page: page, per_page: CONSULTATIONS_PER_PAGE)
+    doctor.consultations.includes(:patient).past.paginate(page: page, per_page: CONSULTATIONS_PER_PAGE)
   end
 
   def find_by_id(id)
